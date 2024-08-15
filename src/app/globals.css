@@ -1,33 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  background-color: black;
+  color: white;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.salsa-regular {
+  font-family: "Salsa", cursive;
+    font-weight: 400;
+    font-style: normal;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  h1{
+    font-size: 60px;
+    font-weight: 900;
+    color: #E3694C;
+    font-family: "Salsa", cursive;
   }
-}
+  .icon{
+    transition: all .5s ease-in-out;
+
+  }
+  .icon-wrapper:hover .icon {
+    transform: scale(1.2, 1.2);
+    transition: all .5s ease-in-out;
+  }
+  
