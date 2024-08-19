@@ -26,4 +26,10 @@ body{
     transform: scale(1.2, 1.2);
     transition: all .5s ease-in-out;
   }
+  @media only screen and (max-width: 600px){
+    h1{
+      font-size: 45px;
+      line-height: 1;
+    }
+  }
   

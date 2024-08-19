@@ -25,13 +25,13 @@ const Moods: React.FC = () => {
         <h1 className=''>Hey!!! </h1>
         <p className='text-xl'>How are you feeling this {currentGreeting()}?</p>
       </div>
-      <div className='grid grid-cols-5 gap-5 px-20 py-5 '>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-2 sm:px-10 py-5 '>
         {IconList.map((mood, index) => (
           <Link
             key={index}
             href={`/Moods/${mood.name.toLowerCase()}`}
             passHref
-            className='icon-wrapper flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-[#E3694C] p-5 transition-all hover:bg-[#E3694C] '
+            className='icon-wrapper w-full flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-[#E3694C] p-5 transition-all hover:bg-[#E3694C] '
           >
             <Icon width='72' height='72' icon={mood.icon} className='icon' />
             <span>{mood.name}</span>

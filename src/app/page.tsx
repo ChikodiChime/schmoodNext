@@ -5,10 +5,8 @@ import {FaArrowRight} from 'react-icons/fa'
 
 const Home = () => {
   return (
-    <section className="py-10 h-screen">
-      <div className="container">
-       
-        <div className="flex items-center w-full h-full justify-center ">
+    <section className="h-screen">
+        <div className="flex  items-center w-full h-full justify-center px-5 ">
           <div className="left">
             <Image
             src="/boy.svg"
@@ -23,7 +21,6 @@ const Home = () => {
             <a href='/Moods'  className='px-12 py-3 bg-[#E3694C] text-white flex items-center justify-center gap-2 cursor-pointer'>Next <FaArrowRight/></a>
           </div>
         </div>
-      </div>
     </section>
   )
 }

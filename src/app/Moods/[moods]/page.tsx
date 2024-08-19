@@ -17,7 +17,7 @@ const page: FC<pageProps> = async ({ params }) => {
     const curHr = new Date().getHours();
     if (curHr < 12) {
       return 'Breakfast';
-    } else if (curHr < 18) {
+    } else if (curHr < 17) {
       return 'Lunch';
     } else {
       return 'Dinner';
@@ -41,29 +41,29 @@ const page: FC<pageProps> = async ({ params }) => {
   const foods = getRandomFoods(filteredFoods, 6);
 
   return (
-    <div>
-      <div className="p-4">
-        <div className="text-center">
-          <h1>I see you are feeling {capitalizedMood}</h1>
+    
+      <div className="px-2 py-10 sm:px-10">
+        <div className="text-center py-10">
+          <h1 className=''>I see you are feeling {capitalizedMood}</h1>
           <p>
             I have some food suggestions that are just right for you
           </p>
         </div>
 
-        <div className="grid h-full w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-10 p-20">
+        <div className="grid h-full w-full grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 justify-center items-center place-items-center  gap-10   ">
           {foods.map(food => (
             <div
               key={food.id}
-              className="flex h-[auto] w-[350px] flex-col items-center justify-center gap-3 rounded-md bg-white/5 px-2 text-center"
+              className="flex h-full w-[100%] flex-col items-center justify-center gap-3 rounded-md bg-white/5 px-2 text-center"
             >
-              <div className="relative h-[300px] w-[350px]">
+              <div className="relative h-[270px] w-full">
                 <Image
                   src={food.image}
                   alt={food.name}
                   width={350}
                   height={300}
                   objectFit="cover"
-                  className="h-full w-full rounded-t-md object-cover"
+                  className="h-full w-full  rounded-t-md object-cover"
                 />
                 <p className="absolute bottom-0 left-0 bg-black/50 px-2">
                   {currentGreeting()}
@@ -83,7 +83,6 @@ const page: FC<pageProps> = async ({ params }) => {
           ))}
         </div>
       </div>
-    </div>
   );
 };
 
