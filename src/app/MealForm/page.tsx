@@ -56,7 +56,7 @@ export default function Form() {
   }
 
   return (
-    <div className="flex h-screen w-full items-center justify-center">
+    <div className="flex h-screen  w-full items-center justify-center">
       <form onSubmit={onSubmit} className="flex flex-col justify-center gap-5 border p-10">
         <input
           type="file"
@@ -67,7 +67,7 @@ export default function Form() {
         <div className="flex flex-col">
           <label htmlFor="name">Name</label>
           <input
-            className="h-[40px] border"
+            className="h-[40px] border text-black"
             value={name}
             type="text"
             id="name"
@@ -80,7 +80,7 @@ export default function Form() {
         <div className="flex flex-col">
           <label htmlFor="description">Description</label>
           <input
-            className="h-[40px] border"
+            className="h-[40px] border text-black"
             value={description}
             type="text"
             id="description"
@@ -90,11 +90,11 @@ export default function Form() {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-black">
           <TODDropdown selectedTime={selectedTime} onChange={setSelectedTime} />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-black">
           <MultiSelectDropdown selectedMood={selectedMood} onChange={setSelectedMood} />
         </div>
 

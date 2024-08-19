@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Icon } from '@iconify-icon/react'
 import IconList from '../utils/moods'
+import Link from 'next/link'
 type UserTime = {
   greeting: string
 }
@@ -25,15 +26,16 @@ const Moods: React.FC = () => {
         <p className='text-xl'>How are you feeling this {currentGreeting()}?</p>
       </div>
       <div className='grid grid-cols-5 gap-5 px-20 py-5 '>
-        {IconList.map((item, index) => (
-          <a
-            href={item.to}
+        {IconList.map((mood, index) => (
+          <Link
             key={index}
+            href={`/Moods/${mood.name.toLowerCase()}`}
+            passHref
             className='icon-wrapper flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-[#E3694C] p-5 transition-all hover:bg-[#E3694C] '
           >
-            <Icon width='72' height='72' icon={item.icon} className='icon' />
-            <span>{item.name}</span>
-          </a>
+            <Icon width='72' height='72' icon={mood.icon} className='icon' />
+            <span>{mood.name}</span>
+          </Link>
         ))}
       </div>
     </>
