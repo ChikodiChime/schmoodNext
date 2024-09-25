@@ -67,9 +67,8 @@ const page: FC<pageProps> = async ({ params }) => {
     const foods = getRandomFoods(filteredFoods, 6)
 
     return (
-        <div className='px-2 py-10 sm:px-10'>
-            <div className='py-10 text-center'>
-                <div className='flex w-full justify-between'>
+        <div className='px-2 py-5 sm:px-10'>
+            <div className='flex w-full mb-5 justify-between'>
                     <Link
                         href={'/Moods'}
                         className='flex items-center gap-2 text-sm'
@@ -81,6 +80,8 @@ const page: FC<pageProps> = async ({ params }) => {
                     </Link>
                     <ReloadBtn />
                 </div>
+            <div className=' text-center space-y-5 sm:space-y-0 mb-5'>
+                
                 <h1 className=''>I see you are feeling {capitalizedMood}</h1>
                 <p>I have some food suggestions that are just right for you</p>
             </div>

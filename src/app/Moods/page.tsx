@@ -14,7 +14,7 @@ const Moods: React.FC = () => {
     const currentGreeting = (): string => {
         if (curHr < 12) {
             return 'Morning'
-        } else if (curHr < 18) {
+        } else if (curHr < 17) {
             return 'Afternoon'
         } else {
             return 'evening'
@@ -23,18 +23,19 @@ const Moods: React.FC = () => {
 
     return (
         <>
-            <div className=' flex w-full flex-col items-center justify-center'>
-                <h1 className=''>Hey!!! </h1>
-                <p className='text-xl'>
-                    How are you feeling this {currentGreeting()}?
-                </p>
-            </div>
-            <Link href={'/'} className='flex items-center gap-2 text-sm pl-10'>
+         <Link href={'/'} className='flex items-center my-5 gap-2 text-sm pl-10'>
                 <span className='text-[#E3694C]  hover:text-gray-700'>
                     <FaAngleLeft/>
                 </span>
                 <span className='text-gray-700'>Go Back</span>
             </Link>
+            <div className=' flex w-full flex-col items-center justify-center gap-5'>
+                <h1 className=''>Hey!!! </h1>
+                <p className='text-xl text-center '>
+                    How are you feeling this {currentGreeting()}?
+                </p>
+            </div>
+           
             <Suspense fallback={<Loading/>}>
             <div className='grid grid-cols-2 gap-5 px-2 py-5 sm:px-10 md:grid-cols-3 lg:grid-cols-4 '>
                 {IconList.map((mood, index) => (
