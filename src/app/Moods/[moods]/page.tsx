@@ -28,7 +28,7 @@ const page: FC<pageProps> = async ({ params }) => {
         const curHr = new Date().getHours()
         if (curHr < 12) {
             return 'Breakfast'
-        } else if (curHr < 17) {
+        } else if (curHr < 15) {
             return 'Lunch'
         } else {
             return 'Dinner'
@@ -101,7 +101,21 @@ const page: FC<pageProps> = async ({ params }) => {
                                 className='h-full w-full  rounded-t-md object-cover'
                             />
                             <p className='absolute bottom-0 left-0 bg-black/50 px-2'>
-                                {currentGreeting()}
+                                {food.selectedTime.some(time =>
+                                    time
+                                        .split(',')
+                                        .map(t => t.trim())
+                                        .includes(currentGreeting())
+                                )
+                                    ? currentGreeting()
+                                    : food.selectedTime.some(time =>
+                                            time
+                                                .split(',')
+                                                .map(t => t.trim())
+                                                .includes('Snack')
+                                        )
+                                      ? 'Snack'
+                                      : ''}
                             </p>
                         </div>
                         <div className='flex h-2/6 flex-col items-center justify-center gap-3 py-4'>
