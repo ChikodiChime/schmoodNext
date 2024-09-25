@@ -1,6 +1,6 @@
 "use server"
 import prisma from "../utils/connect"
-import { getFilePath } from "./upload/route"
+import { getFilePath } from "../utils/filehelpers"
 
 export async function addFood(formData: FormData) {
  

@@ -1,12 +1,8 @@
 import { writeFile, mkdir } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
-import { join, dirname } from "path";
-import prisma from "@/app/utils/connect";// Adjust the import according to your project structure
-
-// Function to get the file path
-export const getFilePath = (fileName: string) => {
-  return join(process.cwd(), 'tmp', fileName);
-};
+import { dirname } from "path";
+import prisma from "@/app/utils/connect"; // Adjust the import according to your project structure
+import { getFilePath } from "../../utils/filehelpers"; // Import the utility function
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,23 +16,22 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Generate the file path
-    const path = join(process.cwd(),'public', 'tmp', file.name);
-
+    // Generate the file path in /tmp directory
+    const path = getFilePath(file.name);
 
     // Ensure the directory exists
     await mkdir(dirname(path), { recursive: true });
 
-    // Write the file
+    // Write the file to /tmp
     await writeFile(path, buffer);
-    
+
     console.log(`File saved at: ${path}`);
 
     // Store the file path and other data in Prisma
     const foodEntry = await prisma.food.create({
       data: {
         name: data.get('name') as string,
-        image:  `/tmp/${file.name}`, // Store the file path in the database
+        image: `/tmp/${file.name}`, // Store the temporary file path in the database
         description: data.get('description') as string,
         selectedTime: data.getAll('TOD') as string[],
         selectedMood: data.getAll('mood') as string[]
