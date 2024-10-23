@@ -1,8 +1,8 @@
 import { writeFile, mkdir } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { dirname } from "path";
-import prisma from "@/app/utils/connect"; // Adjust the import according to your project structure
-import { getFilePath } from "../../utils/filehelpers"; // Import the utility function
+import prisma from "@/app/utils/connect"; 
+import { getFilePath } from "../../utils/filehelpers"; 
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,16 +14,14 @@ export async function POST(request: NextRequest) {
     }
 
     const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    // Generate the file path in /tmp directory
+    const uint8Array = new Uint8Array(bytes); 
     const path = getFilePath(file.name);
 
     // Ensure the directory exists
     await mkdir(dirname(path), { recursive: true });
 
-    // Write the file to /tmp
-    await writeFile(path, buffer);
+    // Write the file
+    await writeFile(path, uint8Array); // Use Uint8Array instead of Buffer
 
     console.log(`File saved at: ${path}`);
 
@@ -34,7 +32,7 @@ export async function POST(request: NextRequest) {
         image: `/tmp/${file.name}`, // Store the temporary file path in the database
         description: data.get('description') as string,
         selectedTime: data.getAll('TOD') as string[],
-        selectedMood: data.getAll('mood') as string[]
+        selectedMood: data.getAll('mood') as string[],
       }
     });
 
